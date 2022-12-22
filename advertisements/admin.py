@@ -7,6 +7,7 @@ from advertisements.models import Advertisement
 class AdvertisementInline(admin.TabularInline):
     model = Advertisement  # промежуточная таблица
 
+
 class AdvertisementAdmin(admin.ModelAdmin):
     inlines = [AdvertisementInline]
     list_display = ['id', 'brand', 'model', 'color']  # отображение в админке в виде таблицы
