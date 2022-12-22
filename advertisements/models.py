@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django_filters import DateFromToRangeFilter, FilterSet
 
 
 class AdvertisementStatusChoices(models.TextChoices):
@@ -28,3 +29,13 @@ class Advertisement(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True
     )
+
+
+class DateFilter(FilterSet):
+    """ Фильтрация по дате  _after & _before"""
+    created_at = DateFromToRangeFilter()
+    updated_at = DateFromToRangeFilter()
+
+    class Meta:
+        model = Advertisement
+        fields = ['created_at', 'updated_at']
